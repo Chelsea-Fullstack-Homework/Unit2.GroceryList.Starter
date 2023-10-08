@@ -15,9 +15,11 @@ const cart = [];
 
 function logItemNames() {
   //TODO: use the .forEach() method to log out the name of each item
-  items.forEach((item) => {
-    console.log(item.name);
-  });
+  items.forEach(
+    (item) => {
+      console.log(item.name);
+    }
+  );
 }
 
 /**
@@ -26,11 +28,13 @@ function logItemNames() {
  */
 function findItemById(id) {
   // TODO: Use the .find() method to return the item who's id matches the passed in id
-  return items.find((item) => {
-    if(id === item.id){
-      return item;
+  return items.find(
+    (item) => {
+      if(id === item.id){
+        return item;
+      }
     }
-  });
+  );
 }
 
 /**
@@ -39,9 +43,11 @@ function findItemById(id) {
 function capitalizeNames() {
   // TODO:  Use the .map() and possibly .slice() methods and return a new items array with the item names capitalized
   // DO NOT MUTATE THE ORIGINAL ARRAY IN YOU LOGIC
-  return items.map((item) => {
-    return item.name.toUpperCase();
-  });
+  return items.map(
+    (item) => {
+      return item.name.toUpperCase();
+    }
+  );
 }
 
 /**
@@ -50,6 +56,18 @@ function capitalizeNames() {
 
 function calculateTotalInventory() {
   // TODO Use the .reduce() method to return the total number of items in inventory
+  let itemsArray = [];
+  items.map(
+    (item) => {
+      itemsArray.push(item.inventory);
+    }
+  )
+
+  return itemsArray.reduce(
+    (accum, item) => {
+      return accum + item;
+    }
+  );
 }
 
 /**
