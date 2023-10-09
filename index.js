@@ -84,6 +84,12 @@ function calculateAllInventoryPrice() {
  */
 function getItemPriceByName(name) {
   // TODO: Use your knowledge of objects and arrays to get the price of the item passed in
+  for(let index in items){
+    if(items[index].name === name){
+      return items[index].price;
+    }
+  }
+  return -1;
 }
 
 /**
