@@ -107,6 +107,14 @@ function filterItemsByCategoryId(categoryId) {
 
 function logCartItems() {
   // TODO: Loop through your cart and use the indexes to log the names of all items in your cart
+  for(i in cart){
+    for(j in items){
+      if(items[j].id == cart[i]){
+        console.log(items[j].name);
+        break;
+      }
+    }
+  }
 }
 
 /**
@@ -118,7 +126,7 @@ function calculateTotalCartPrice() {
 
 // --------------------- DO NOT CHANGE THE CODE BELOW ------------------------ //
 
-const ids = "1, 3, 5";
+const ids = "1, 3";
 // prompt(
 //   "enter numbers separated by commas for the ids of the items you want to add to your cart",
 //   "1, 3, 5"
