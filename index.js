@@ -45,7 +45,9 @@ function capitalizeNames() {
   // DO NOT MUTATE THE ORIGINAL ARRAY IN YOU LOGIC
   return items.map(
     (item) => {
-      return item.name.toUpperCase();
+      const newItem = {...item};
+      newItem.name = item.name.toUpperCase();
+      return newItem;
     }
   );
 }
@@ -56,17 +58,11 @@ function capitalizeNames() {
 
 function calculateTotalInventory() {
   // TODO Use the .reduce() method to return the total number of items in inventory
-  let itemsArray = [];
-  items.map(
-    (item) => {
-      itemsArray.push(item.inventory);
-    }
-  )
-
-  return itemsArray.reduce(
+  return items.reduce(
     (accum, item) => {
-      return accum + item;
-    }
+      return accum + item.inventory;
+    },
+    0
   );
 }
 
@@ -75,6 +71,13 @@ function calculateTotalInventory() {
  */
 function calculateAllInventoryPrice() {
   // TODO Use the .reduce() method to return the total price of all the items in inventory
+  // accum = 0;
+  return items.reduce(
+    (accum, item) => {
+      return accum += item.price;
+    },
+    0
+  );
 }
 
 /**
@@ -83,6 +86,12 @@ function calculateAllInventoryPrice() {
  */
 function getItemPriceByName(name) {
   // TODO: Use your knowledge of objects and arrays to get the price of the item passed in
+  for(let index in items){
+    if(items[index].name === name){
+      return items[index].price;
+    }
+  }
+  return;
 }
 
 /**
@@ -91,10 +100,23 @@ function getItemPriceByName(name) {
  */
 function filterItemsByCategoryId(categoryId) {
   // TODO: use the .filter() method to filter out all items which don't belong the passed in category
+  return items.filter(
+    (item) => {
+      return item.categoryId === categoryId;
+    }
+  );
 }
 
 function logCartItems() {
   // TODO: Loop through your cart and use the indexes to log the names of all items in your cart
+  for(i in cart){
+    for(j in items){
+      if(items[j].id == cart[i]){
+        console.log(items[j].name);
+        break;
+      }
+    }
+  }
 }
 
 /**
@@ -102,15 +124,24 @@ function logCartItems() {
  */
 function calculateTotalCartPrice() {
   // TODO: Loop through your cart and return the total price of all items in your cart
+  let accum = 0;
+  for(i in cart){
+    for(j in items){
+      if(items[j].id == cart[i]){
+        accum += items[j].price;
+        break;
+      }
+    }
+  }
+  return accum;
 }
 
 // --------------------- DO NOT CHANGE THE CODE BELOW ------------------------ //
 
-const ids = "1, 3, 5";
-// prompt(
-//   "enter numbers separated by commas for the ids of the items you want to add to your cart",
-//   "1, 3, 5"
-// );
+const ids = prompt(
+  "enter numbers separated by commas for the ids of the items you want to add to your cart",
+  "1, 3, 5"
+);
 
 // Split the string of numbers into an array of strings.
 const idArr = ids.split(", ");
@@ -118,8 +149,7 @@ const idArr = ids.split(", ");
 idArr.forEach((id) => cart.push(id));
 console.log(`The names of all the items are: `);
 logItemNames();
-const itemId = "1";
-// prompt("enter the id of an item you are trying to find", "1");
+const itemId = prompt("enter the id of an item you are trying to find", "1");
 console.log(
   `The item with id ${itemId} is  ${JSON.stringify(
     findItemById(+itemId),
@@ -140,18 +170,16 @@ console.log(
   calculateAllInventoryPrice()
 );
 
-const itemToFind = "apple";
-// prompt(
-//   "Enter the name of an item to find the price of",
-//   "apple"
-// );
+const itemToFind = prompt(
+  "Enter the name of an item to find the price of",
+  "apple"
+);
 console.log(`The price of ${itemToFind} is: `, getItemPriceByName(itemToFind));
 
-const categoryId = 2;
-// prompt(
-//   "Enter a number between 1-4 to filter only items with that categoryId",
-//   2
-// );
+const categoryId = prompt(
+  "Enter a number between 1-4 to filter only items with that categoryId",
+  2
+);
 console.log(
   `The items in category ${categoryId} are: `,
   filterItemsByCategoryId(+categoryId)
