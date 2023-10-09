@@ -43,11 +43,14 @@ function findItemById(id) {
 function capitalizeNames() {
   // TODO:  Use the .map() and possibly .slice() methods and return a new items array with the item names capitalized
   // DO NOT MUTATE THE ORIGINAL ARRAY IN YOU LOGIC
-  return items.map(
+  const capitalNameItemsArr = items.map(
     (item) => {
-      return item.name.toUpperCase();
+      const newItem = {...item};
+      newItem.name = item.name.toUpperCase();
+      return newItem;
     }
   );
+  return capitalNameItemsArr;
 }
 
 /**
@@ -126,7 +129,7 @@ function calculateTotalCartPrice() {
 
 // --------------------- DO NOT CHANGE THE CODE BELOW ------------------------ //
 
-const ids = "1, 3";
+const ids = "1, 3, 5";
 // prompt(
 //   "enter numbers separated by commas for the ids of the items you want to add to your cart",
 //   "1, 3, 5"
