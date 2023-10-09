@@ -43,14 +43,13 @@ function findItemById(id) {
 function capitalizeNames() {
   // TODO:  Use the .map() and possibly .slice() methods and return a new items array with the item names capitalized
   // DO NOT MUTATE THE ORIGINAL ARRAY IN YOU LOGIC
-  const capitalNameItemsArr = items.map(
+  return items.map(
     (item) => {
       const newItem = {...item};
       newItem.name = item.name.toUpperCase();
       return newItem;
     }
   );
-  return capitalNameItemsArr;
 }
 
 /**
