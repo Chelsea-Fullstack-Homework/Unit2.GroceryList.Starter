@@ -75,6 +75,13 @@ function calculateTotalInventory() {
  */
 function calculateAllInventoryPrice() {
   // TODO Use the .reduce() method to return the total price of all the items in inventory
+  // accum = 0;
+  return items.reduce(
+    (accum, item) => {
+      return accum += item.price;
+    },
+    0
+  );
 }
 
 /**
