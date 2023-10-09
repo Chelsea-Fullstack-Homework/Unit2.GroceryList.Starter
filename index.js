@@ -89,7 +89,7 @@ function getItemPriceByName(name) {
       return items[index].price;
     }
   }
-  return -1;
+  return;
 }
 
 /**
@@ -98,6 +98,11 @@ function getItemPriceByName(name) {
  */
 function filterItemsByCategoryId(categoryId) {
   // TODO: use the .filter() method to filter out all items which don't belong the passed in category
+  return items.filter(
+    (item) => {
+      return item.categoryId === categoryId;
+    }
+  );
 }
 
 function logCartItems() {
