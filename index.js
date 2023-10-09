@@ -124,6 +124,16 @@ function logCartItems() {
  */
 function calculateTotalCartPrice() {
   // TODO: Loop through your cart and return the total price of all items in your cart
+  let accum = 0;
+  for(i in cart){
+    for(j in items){
+      if(items[j].id == cart[i]){
+        accum += items[j].price;
+        break;
+      }
+    }
+  }
+  return accum;
 }
 
 // --------------------- DO NOT CHANGE THE CODE BELOW ------------------------ //
