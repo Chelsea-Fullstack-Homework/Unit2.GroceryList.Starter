@@ -56,17 +56,11 @@ function capitalizeNames() {
 
 function calculateTotalInventory() {
   // TODO Use the .reduce() method to return the total number of items in inventory
-  let itemsArray = [];
-  items.map(
-    (item) => {
-      itemsArray.push(item.inventory);
-    }
-  )
-
-  return itemsArray.reduce(
+  return items.reduce(
     (accum, item) => {
-      return accum + item;
-    }
+      return accum + item.inventory;
+    },
+    0
   );
 }
 
