@@ -138,11 +138,10 @@ function calculateTotalCartPrice() {
 
 // --------------------- DO NOT CHANGE THE CODE BELOW ------------------------ //
 
-const ids = "1, 3, 5";
-// prompt(
-//   "enter numbers separated by commas for the ids of the items you want to add to your cart",
-//   "1, 3, 5"
-// );
+const ids = prompt(
+  "enter numbers separated by commas for the ids of the items you want to add to your cart",
+  "1, 3, 5"
+);
 
 // Split the string of numbers into an array of strings.
 const idArr = ids.split(", ");
@@ -150,8 +149,7 @@ const idArr = ids.split(", ");
 idArr.forEach((id) => cart.push(id));
 console.log(`The names of all the items are: `);
 logItemNames();
-const itemId = "1";
-// prompt("enter the id of an item you are trying to find", "1");
+const itemId = prompt("enter the id of an item you are trying to find", "1");
 console.log(
   `The item with id ${itemId} is  ${JSON.stringify(
     findItemById(+itemId),
@@ -172,18 +170,16 @@ console.log(
   calculateAllInventoryPrice()
 );
 
-const itemToFind = "apple";
-// prompt(
-//   "Enter the name of an item to find the price of",
-//   "apple"
-// );
+const itemToFind = prompt(
+  "Enter the name of an item to find the price of",
+  "apple"
+);
 console.log(`The price of ${itemToFind} is: `, getItemPriceByName(itemToFind));
 
-const categoryId = 2;
-// prompt(
-//   "Enter a number between 1-4 to filter only items with that categoryId",
-//   2
-// );
+const categoryId = prompt(
+  "Enter a number between 1-4 to filter only items with that categoryId",
+  2
+);
 console.log(
   `The items in category ${categoryId} are: `,
   filterItemsByCategoryId(+categoryId)
