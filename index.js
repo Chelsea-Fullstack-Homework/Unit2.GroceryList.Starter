@@ -86,9 +86,9 @@ function calculateAllInventoryPrice() {
  */
 function getItemPriceByName(name) {
   // TODO: Use your knowledge of objects and arrays to get the price of the item passed in
-  for(let index in items){
-    if(items[index].name === name){
-      return items[index].price;
+  for(item of items){
+    if(item.name === name){
+      return item.price;
     }
   }
   return;
@@ -109,10 +109,10 @@ function filterItemsByCategoryId(categoryId) {
 
 function logCartItems() {
   // TODO: Loop through your cart and use the indexes to log the names of all items in your cart
-  for(i in cart){
-    for(j in items){
-      if(items[j].id == cart[i]){
-        console.log(items[j].name);
+  for(id of cart){
+    for(item of items){
+      if(item.id == id){
+        console.log(item.name);
         break;
       }
     }
@@ -125,10 +125,10 @@ function logCartItems() {
 function calculateTotalCartPrice() {
   // TODO: Loop through your cart and return the total price of all items in your cart
   let accum = 0;
-  for(i in cart){
-    for(j in items){
-      if(items[j].id == cart[i]){
-        accum += items[j].price;
+  for(id of cart){
+    for(item of items){
+      if(item.id == id){
+        accum += item.price;
         break;
       }
     }
